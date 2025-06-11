@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>860</width>
+    <height>522</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>860</width>
+    <height>522</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>AI助手亚托莉</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../assets/第24帧.png</normaloff>../assets/第24帧.png</iconset>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>800</width>
+       <height>500</height>
+      </size>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::DefaultContextMenu</enum>
+     </property>
+     <property name="acceptDrops">
+      <bool>false</bool>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/* 整个 QTabWidget 的样式 */
+QTabWidget {
+    background-color: transparent; /* 背景完全透明 */
+    border: none; /* 没有边框 */
+}
+
+/* QTabBar 的样式 */
+QTabBar {
+    background-color: transparent; /* 背景完全透明 */
+    border: none; /* 没有边框 */
+}
+
+/* 单个标签页的样式 */
+QTabBar::tab {
+    background-color: transparent; /* 背景完全透明 */
+    border: none; /* 没有边框 */
+    padding: 4px; /* 内边距，可以根据需要调整 */
+}
+
+/* 选中标签页的样式 */
+QTabBar::tab:selected {
+    background-color: transparent; /* 选中时背景依然透明 */
+    border: none; /* 没有边框 */
+}
+
+/* 鼠标悬停时的样式 */
+QTabBar::tab:hover,QTabBar::tab:pressed {
+	padding-left: 8px;
+	padding-bottom: 8px;
+    background-color: rgba(0, 0, 0, 0.1); /* 轻微的半透明背景，可选 */
+}
+</string>
+     </property>
+     <property name="tabPosition">
+      <enum>QTabWidget::West</enum>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>28</width>
+       <height>28</height>
+      </size>
+     </property>
+     <property name="elideMode">
+      <enum>Qt::ElideLeft</enum>
+     </property>
+     <property name="documentMode">
+      <bool>false</bool>
+     </property>
+     <property name="tabsClosable">
+      <bool>false</bool>
+     </property>
+     <property name="movable">
+      <bool>false</bool>
+     </property>
+     <property name="tabBarAutoHide">
+      <bool>false</bool>
+     </property>
+     <widget class="QWidget" name="tab_1">
+      <property name="minimumSize">
+       <size>
+        <width>800</width>
+        <height>500</height>
+       </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent; /* 背景完全透明 */
+</string>
+      </property>
+      <attribute name="icon">
+       <iconset>
+        <normaloff>../assets/搜索.png</normaloff>
+        <normalon>../assets/搜索_b.png</normalon>../assets/搜索.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string/>
+      </attribute>
+      <attribute name="toolTip">
+       <string>搜索</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="HighlightableListWidget" name="QueryWidget">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="movement">
+          <enum>QListView::Static</enum>
+         </property>
+         <property name="flow">
+          <enum>QListView::TopToBottom</enum>
+         </property>
+         <property name="layoutMode">
+          <enum>QListView::SinglePass</enum>
+         </property>
+         <property name="viewMode">
+          <enum>QListView::ListMode</enum>
+         </property>
+         <property name="sortingEnabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,12,1,0">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>38</width>
+             <height>36</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QComboBox" name="searchOptions">
+           <property name="styleSheet">
+            <string notr="true">QComboBox {
+    border: 1px solid black; /* 黑色边框 */
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+}
+</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>全部</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>对话</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>笔记</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>知识库</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>待办</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="searchInput">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    border: 1px solid #838383; /* 黑色边框 */
+    border-radius: 14px; /* 圆角 */
+    padding: 5px; /* 内边距 */
+}
+
+/* 输入框获得焦点时的样式 */
+/* QLineEdit:focus {
+    border: 2px solid #0078D7; /* 获得焦点时边框颜色变化，例如深蓝色 */
+/* }</string>
+           </property>
+           <property name="placeholderText">
+            <string>输入关键词</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="searchQuery">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: transparent; /* 背景完全透明 */
+    border: none; /* 没有边框 */
+	padding: 3px;
+	border-radius: 15px;
+}
+/* 鼠标悬停时的样式 */
+QPushButton:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* 轻微的半透明背景 */
+}
+
+/* 按下时的样式 */
+QPushButton:pressed {
+    background-color: rgba(0, 0, 0, 0.2); /* 稍微明显一点的半透明背景 */
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../assets/搜索.png</normaloff>
+             <normalon>../assets/搜索_b.png</normalon>../assets/搜索.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <attribute name="icon">
+       <iconset>
+        <normaloff>../assets/AI.png</normaloff>
+        <normalon>../assets/AI-B.png</normalon>../assets/AI.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string/>
+      </attribute>
+      <attribute name="toolTip">
+       <string>AI问答</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="1" column="0">
+        <widget class="QPushButton" name="new_conversation">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>新建对话</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="chatinput">
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 1px solid #838383; /* 黑色边框 */
+    border-radius: 14px; /* 圆角 */
+    padding: 5px; /* 内边距 */
+}
+
+/* 输入框获得焦点时的样式 */
+/* QLineEdit:focus {
+    border: 2px solid #0078D7; /* 获得焦点时边框颜色变化，例如深蓝色 */
+/* }</string>
+         </property>
+         <property name="placeholderText">
+          <string>在此发送消息</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="send">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: transparent; /* 背景完全透明 */
+    border: none; /* 没有边框 */
+	padding: 3px;
+	border-radius: 15px;
+}
+/* 鼠标悬停时的样式 */
+QPushButton:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* 轻微的半透明背景 */
+}
+
+/* 按下时的样式 */
+QPushButton:pressed {
+    background-color: rgba(0, 0, 0, 0.2); /* 稍微明显一点的半透明背景 */
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../assets/搜索.png</normaloff>
+           <normalon>../assets/搜索_b.png</normalon>../assets/搜索.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="MessageListWidget" name="dialogue"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QListWidget" name="messagelist">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>120</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="Note">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <attribute name="icon">
+       <iconset>
+        <normaloff>../assets/笔记本、笔记.png</normaloff>
+        <normalon>../assets/笔记本-b.png</normalon>../assets/笔记本、笔记.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string/>
+      </attribute>
+      <attribute name="toolTip">
+       <string>笔记</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="1,5">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <item>
+          <widget class="QListWidget" name="noteList">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>120</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="newNote">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>新建</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Title:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="titleEdit">
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Tags</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="tagsEdit">
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="noteShow">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QPushButton" name="editNote">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>2</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>切换到编辑</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="saveNote">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>2</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>保存</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="delNote">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>2</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>删除</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="icon">
+       <iconset>
+        <normaloff>../assets/数据库.png</normaloff>
+        <normalon>../assets/数据库_b.png</normalon>
+        <disabledoff>../assets/数据库.png</disabledoff>../assets/数据库.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string/>
+      </attribute>
+      <attribute name="toolTip">
+       <string>知识库</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QRadioButton" name="radioButton">
+           <property name="text">
+            <string>全部</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_2">
+           <property name="text">
+            <string>文档</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_3">
+           <property name="text">
+            <string>笔记</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="text">
+            <string>上传</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QListWidget" name="listWidget">
+         <property name="styleSheet">
+          <string notr="true">QListWidget {
+    background-color: #f0f4f8; /* 背景颜色，选择了一个淡蓝色 */
+    border: 1px solid #cdd6de; /* 边框颜色和宽度，淡灰色边框 */
+    border-radius: 5px; /* 边框圆角半径 */
+    padding: 5px; /* 内边距 */
+    font-family: &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; /* 字体 */
+    font-size: 14px; /* 字体大小 */
+	outline:0px; 
+}
+
+QListWidget::item {
+    padding: 5px; /* 列表项内边距 */
+    margin-bottom: 2px; /* 每个列表项之间的间距 */
+    color: #333333; /* 文字颜色，深灰色 */
+}
+
+QListWidget::item:hover {
+    background-color: #e1e7ed; /* 鼠标悬停时背景颜色，淡灰色 */
+    color: #000000; /* 鼠标悬停时文字颜色，黑色 */
+    border-radius: 5px; /* 圆角半径 */
+}
+
+QListWidget::item:selected {
+    background-color: #bcd9e1; /* 选中项背景颜色，淡蓝绿色 */
+    color: #000000; /* 选中项文字颜色，黑色 */
+    border-radius: 5px; /* 圆角半径 */
+}</string>
+         </property>
+         <property name="viewMode">
+          <enum>QListView::ListMode</enum>
+         </property>
+         <property name="batchSize">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="icon">
+       <iconset>
+        <normaloff>../assets/待办事项.png</normaloff>
+        <normalon>../assets/待办事项_b.png</normalon>
+        <disabledoff>../assets/待办事项.png</disabledoff>../assets/待办事项.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string/>
+      </attribute>
+      <attribute name="toolTip">
+       <string>待办事项</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_6">
+      <attribute name="icon">
+       <iconset>
+        <normaloff>../assets/设置.png</normaloff>
+        <normalon>../assets/设置_b.png</normalon>../assets/设置.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string/>
+      </attribute>
+      <attribute name="toolTip">
+       <string>设置</string>
+      </attribute>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MessageListWidget</class>
+   <extends>QListWidget</extends>
+   <header>frontend.src.components.chat_message</header>
+  </customwidget>
+  <customwidget>
+   <class>HighlightableListWidget</class>
+   <extends>QListWidget</extends>
+   <header>frontend.src.components.Query_list</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>QueryWidget</tabstop>
+  <tabstop>searchInput</tabstop>
+  <tabstop>searchQuery</tabstop>
+  <tabstop>searchOptions</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
