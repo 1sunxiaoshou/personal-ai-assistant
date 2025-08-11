@@ -55,14 +55,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-启动后，根据提示在终端或 Web 界面（如有）中与 AI 助手交互。
-
-## 🛠️ 技术栈
-- Python 3
-- LangChain / LlamaIndex（用于知识库）
-- 向量数据库（如 Chroma、FAISS）
-- 大语言模型 API 或本地模型
-- Tkinter / Flask（前端交互，视具体实现而定）
+启动后，根据提示在Qt界面中与 AI 助手交互。
 
 
 ---
